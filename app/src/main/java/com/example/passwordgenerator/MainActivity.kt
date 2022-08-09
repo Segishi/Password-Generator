@@ -6,11 +6,6 @@ import android.widget.Switch
 import kotlinx.android.synthetic.main.activity_main.*
 import kotlin.random.Random
 
-/*
-    when you make the switches that put restrictions:
-        - when a switch is pressed, make the respective array null
-        - put if statement that says --> if null, then do i-- and then continue (keyword)
- */
 
 class MainActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -33,10 +28,20 @@ class MainActivity : AppCompatActivity() {
 
         // hide the password with asterisks when checked, and reveal it when unchecked
         hidePasswordSwitch.setOnClickListener {
-
+            var tempString = ""
+            if(hidePasswordSwitch.isChecked) {
+                for(i in passwordTextBox.text.toString())
+                    tempString += "*"
+            } else
+                tempString = password
+            passwordTextBox.text = tempString
         }
 
-        // common function to be used for the switch buttons
+        /** common function to be used for the switch buttons
+         * @param switch  Switch datatype that is to be checked if on or off (true or false)
+         * @param array  Array<Char> Character array that is modified to either be assigned to 'sampleArray' or to an empty array
+         * @param sampleArray Array<Char> Character array that is used to set 'array' if a condition is satisfied
+         */
         fun commonSwitchFunction(switch: Switch, array:Array<Char>, sampleArray:Array<Char>):Array<Char> {
             var returnArray = array     // array to be returned
             if(switch.isChecked)
@@ -84,30 +89,22 @@ class MainActivity : AppCompatActivity() {
             while(i < passLength) {
                 when(Random.nextInt(1,5)) {   // pick random number from 1-4 to decide which array to pick an element out of
                     1 -> {
-                        if(upperAlphabets.isEmpty()) {
-                            continue
-                        }
+                        if(upperAlphabets.isEmpty()) continue
                         var upperSelect = Random.nextInt(upperAlphabets.size)   // pick random index in 'upperAlphabets' array
                         password += upperAlphabets[upperSelect]
                     }
                     2 -> {
-                        if(lowerAlphabets.isEmpty()) {
-                            continue
-                        }
+                        if(lowerAlphabets.isEmpty()) continue
                         var lowerSelect = Random.nextInt(lowerAlphabets.size)   // pick random index in 'lowerAlphabets' array
                         password += lowerAlphabets[lowerSelect]
                     }
                     3 -> {
-                        if(symbols.isEmpty()) {
-                            continue
-                        }
+                        if(symbols.isEmpty()) continue
                         var symbolSelect = Random.nextInt(symbols.size)   // pick random index in 'symbols' array
                         password += symbols[symbolSelect]
                     }
                     4 -> {
-                        if(nums.isEmpty()) {
-                            continue
-                        }
+                        if(nums.isEmpty()) continue
                         var numsSelect = Random.nextInt(nums.size)   // pick random index in 'nums' array
                         password += nums[numsSelect]
                     }
