@@ -35,7 +35,7 @@ class MainActivity : AppCompatActivity() {
             password = ""
             var i:Int = 0
             while(i < passLength) {
-                var arraySelect:Int = Random.nextInt(1,5)
+                var arraySelect:Int = Random.nextInt(1,5)   // pick random number from 1-4 to decide which array to pick an element out of
                 when(arraySelect) {
                     1 -> {
                         if(upperAlphabets.size == 0) {
@@ -72,7 +72,7 @@ class MainActivity : AppCompatActivity() {
                 }
                 i++
             }
-            passwordTextBox.text = password
+            passwordTextBox.text = password     // set text box on UI to the generated password
         }
     }
 }

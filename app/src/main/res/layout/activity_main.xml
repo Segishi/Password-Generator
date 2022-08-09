@@ -4,26 +4,35 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:background="#D6BCBC"
     tools:context=".MainActivity">
 
     <Button
         android:id="@+id/generateButton"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="Button"
+        android:layout_width="350dp"
+        android:layout_height="75dp"
+        android:fontFamily="sans-serif-black"
+        android:text="@string/generate"
+        android:textAlignment="center"
+        android:textAllCaps="true"
+        android:textSize="30sp"
+        android:textStyle="bold"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.498"
+        app:layout_constraintHorizontal_bias="0.491"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/hidePasswordSwitch"
-        app:layout_constraintVertical_bias="0.623" />
+        app:layout_constraintVertical_bias="0.739" />
 
     <TextView
         android:id="@+id/passwordTextBox"
-        android:layout_width="141dp"
-        android:layout_height="104dp"
-        android:text="TextView"
-        android:textSize="30sp"
+        android:layout_width="350dp"
+        android:layout_height="75dp"
+        android:background="#E1DDDD"
+        android:hint="@string/password_here"
+        android:includeFontPadding="true"
+        android:textIsSelectable="true"
+        android:textSize="40sp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
@@ -33,14 +42,90 @@
     <Switch
         android:id="@+id/hidePasswordSwitch"
         android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
+        android:layout_height="50dp"
         android:layout_marginTop="24dp"
-        android:text="Switch"
+        android:checked="true"
+        android:showText="false"
+        android:text="@string/hide_password"
+        android:textSize="20sp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.582"
+        app:layout_constraintHorizontal_bias="0.859"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/passwordTextBox"
         app:layout_constraintVertical_bias="0.0" />
+
+    <Switch
+        android:id="@+id/upperCaseSwitch"
+        android:layout_width="wrap_content"
+        android:layout_height="50dp"
+        android:checked="true"
+        android:text="@string/uppercase_e_g_abc"
+        android:textSize="20sp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.815"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/hidePasswordSwitch"
+        app:layout_constraintVertical_bias="0.025" />
+
+    <Switch
+        android:id="@+id/lowerCaseSwitch"
+        android:layout_width="wrap_content"
+        android:layout_height="50dp"
+        android:checked="true"
+        android:text="@string/lowercase_e_g_abc"
+        android:textSize="20sp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.819"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/upperCaseSwitch"
+        app:layout_constraintVertical_bias="0.038" />
+
+    <Switch
+        android:id="@+id/digitsSwitch"
+        android:layout_width="wrap_content"
+        android:layout_height="50dp"
+        android:checked="true"
+        android:text="@string/digits_e_g_123"
+        android:textSize="20sp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.864"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/lowerCaseSwitch"
+        app:layout_constraintVertical_bias="0.031" />
+
+    <TextView
+        android:id="@+id/passwordLength"
+        android:layout_width="250dp"
+        android:layout_height="48dp"
+        android:background="#FFFFFF"
+        android:editable="true"
+        android:fontFamily="sans-serif-condensed"
+        android:hint="@string/_10"
+        android:minHeight="48dp"
+        android:textAlignment="center"
+        android:textColorHint="#979392"
+        android:textSize="25sp"
+        app:layout_constraintBottom_toTopOf="@+id/generateButton"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.192"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/digitsSwitch"
+        app:layout_constraintVertical_bias="0.517" />
+
+    <Button
+        android:id="@+id/setButton"
+        android:layout_width="wrap_content"
+        android:layout_height="48dp"
+        android:text="@string/set"
+        app:layout_constraintBottom_toTopOf="@+id/generateButton"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.261"
+        app:layout_constraintStart_toEndOf="@+id/passwordLength"
+        app:layout_constraintTop_toBottomOf="@+id/digitsSwitch"
+        app:layout_constraintVertical_bias="0.517" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

@@ -1,3 +1,12 @@
 <resources>
     <string name="app_name">Password Generator</string>
+    <string name="uppercase_e_g_abc">Uppercase (e.g. ABC)</string>
+    <string name="lowercase_e_g_abc">Lowercase (e.g. abc)</string>
+    <string name="digits_e_g_123">Digits (e.g. 123)</string>
+    <string name="generate">GENERATE</string>
+    <string name="hide_password">Hide Password</string>
+    <string name="password_here">Password Here</string>
+    <string name="type_here">Type Here</string>
+    <string name="set">SET</string>
+    <string name="_10">10</string>
 </resources>
