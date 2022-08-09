@@ -26,7 +26,7 @@
 
     <TextView
         android:id="@+id/passwordTextBox"
-        android:layout_width="350dp"
+        android:layout_width="320dp"
         android:layout_height="75dp"
         android:background="#E1DDDD"
         android:hint="@string/password_here"
@@ -36,16 +36,17 @@
         android:textSize="40sp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.063"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.113" />
+        app:layout_constraintVertical_bias="0.109" />
 
     <Switch
         android:id="@+id/hidePasswordSwitch"
         android:layout_width="wrap_content"
         android:layout_height="50dp"
         android:layout_marginTop="24dp"
-        android:checked="true"
+        android:checked="false"
         android:showText="false"
         android:text="@string/hide_password"
         android:textSize="20sp"
@@ -117,9 +118,9 @@
         android:layout_height="wrap_content"
         android:ems="10"
         android:fontFamily="sans-serif"
-        android:hint="@string/password_length_1_20"
+        android:hint="@string/password_length_1_12"
         android:importantForAutofill="no"
-        android:inputType="number|textPersonName"
+        android:inputType="number"
         android:minHeight="48dp"
         android:textAlignment="center"
         android:textColorHint="#616161"
@@ -129,5 +130,18 @@
         app:layout_constraintHorizontal_bias="0.154"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/digitsSwitch" />
+
+    <Button
+        android:id="@+id/button"
+        android:layout_width="75dp"
+        android:layout_height="wrap_content"
+        android:text="@android:string/copy"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.533"
+        app:layout_constraintStart_toEndOf="@+id/passwordTextBox"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.131"
+        tools:ignore="TextContrastCheck" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

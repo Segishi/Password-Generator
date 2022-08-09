@@ -22,7 +22,7 @@ class MainActivity : AppCompatActivity() {
         'l','m','n','o','p','q','r','s','t','u','v','w','x','y','z')    // sample array of lowercase alphabets
         val sampleSymbols:Array<Char> = arrayOf('!','@','#','$','%','&','?')    // sample array of special characters
         val sampleNums:Array<Int> = arrayOf(1,2,3,4,5,6,7,8,9)      // sample array of numbers
-        val passLength:Int = 10     // the length desired length of the password
+        val passLength:Int = 12     // the length desired length of the password
         var password:String = ""    // the password that will be created/generated
 
         var upperAlphabets:Array<Char> = sampleUpperAlphabets   // uppercase alphabets array to be used in random generator

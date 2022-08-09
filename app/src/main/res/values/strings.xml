@@ -10,4 +10,5 @@
     <string name="set">SET</string>
     <string name="_10">10</string>
     <string name="password_length_1_20">Password Length: 1 - 20</string>
+    <string name="password_length_1_12">Password Length: 1 - 12</string>
 </resources>
