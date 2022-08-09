@@ -2,6 +2,7 @@ package com.example.passwordgenerator
 
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import android.widget.Switch
 import kotlinx.android.synthetic.main.activity_main.*
 import kotlin.random.Random
 
@@ -21,42 +22,48 @@ class MainActivity : AppCompatActivity() {
         val sampleLowerAlphabets:Array<Char> = arrayOf('a','b','c','d','e','f','g','h','i','j','k',
             'l','m','n','o','p','q','r','s','t','u','v','w','x','y','z')    // sample array of lowercase alphabets
         val sampleSymbols:Array<Char> = arrayOf('!','@','#','$','%','&','?')    // sample array of special characters
-        val sampleNums:Array<Int> = arrayOf(1,2,3,4,5,6,7,8,9)      // sample array of numbers
-        var passLength:Int = 10     // the length desired length of the password
-        var password:String = ""    // the password that will be created/generated
+        val sampleNums:Array<Char> = arrayOf('1','2','3','4','5','6','7','8','9')      // sample array of numbers
+        var passLength = 10     // the length desired length of the password
+        var password = ""    // the password that will be created/generated
 
         var upperAlphabets:Array<Char> = sampleUpperAlphabets   // uppercase alphabets array to be used in random generator
         var lowerAlphabets:Array<Char> = sampleLowerAlphabets   // lowercase alphabets array to be used in random generator
         var symbols:Array<Char> = sampleSymbols     // symbol array to be used in random generator
-        var nums:Array<Int> = sampleNums    // nums array to be used in random generator
+        var nums:Array<Char> = sampleNums    // nums array to be used in random generator
 
         // hide the password with asterisks when checked, and reveal it when unchecked
         hidePasswordSwitch.setOnClickListener {
 
         }
 
+        // common function to be used for the switch buttons
+        fun commonSwitchFunction(switch: Switch, array:Array<Char>, sampleArray:Array<Char>):Array<Char> {
+            var returnArray = array     // array to be returned
+            if(switch.isChecked)
+                returnArray = sampleArray
+            else
+                returnArray = arrayOf()
+            return returnArray
+        }
+
         // allow uppercase letters when checked, and disable when unchecked
         upperCaseSwitch.setOnClickListener {
-            if(upperCaseSwitch.isChecked){
-                upperAlphabets = sampleUpperAlphabets
-            } else {
-                upperAlphabets = arrayOf()
-            }
+            upperAlphabets = commonSwitchFunction(upperCaseSwitch,upperAlphabets,sampleUpperAlphabets)
         }
 
         // allow lowercase letters when checked, and disable when unchecked
         lowerCaseSwitch.setOnClickListener {
-
-        }
-
-        // allow digits when checked, and disable when unchecked
-        digitsSwitch.setOnClickListener {
-
+            lowerAlphabets = commonSwitchFunction(lowerCaseSwitch,lowerAlphabets,sampleLowerAlphabets)
         }
 
         // allow symbols when checked, and disable when unchecked
         symbolsSwitch.setOnClickListener {
+            symbols = commonSwitchFunction(symbolsSwitch,symbols,sampleSymbols)
+        }
 
+        // allow digits/nums when checked, and disable when unchecked
+        digitsSwitch.setOnClickListener {
+            nums = commonSwitchFunction(digitsSwitch,nums,sampleNums)
         }
 
         // set the length of the password based on the inputted number in "passLengthTextBox" when the "SET" button is pressed
@@ -73,37 +80,32 @@ class MainActivity : AppCompatActivity() {
         // generate the random password using the 'random' package and arrays when the "GENERATE" button is pressed
         generateButton.setOnClickListener {
             password = ""
-            var i:Int = 0
+            var i = 0
             while(i < passLength) {
-                var arraySelect:Int = Random.nextInt(1,5)   // pick random number from 1-4 to decide which array to pick an element out of
-                when(arraySelect) {
+                when(Random.nextInt(1,5)) {   // pick random number from 1-4 to decide which array to pick an element out of
                     1 -> {
-                        if(upperAlphabets.size == 0) {
-                            i--
+                        if(upperAlphabets.isEmpty()) {
                             continue
                         }
                         var upperSelect = Random.nextInt(upperAlphabets.size)   // pick random index in 'upperAlphabets' array
                         password += upperAlphabets[upperSelect]
                     }
                     2 -> {
-                        if(lowerAlphabets.size == 0) {
-                            i--
+                        if(lowerAlphabets.isEmpty()) {
                             continue
                         }
                         var lowerSelect = Random.nextInt(lowerAlphabets.size)   // pick random index in 'lowerAlphabets' array
                         password += lowerAlphabets[lowerSelect]
                     }
                     3 -> {
-                        if(symbols.size == 0) {
-                            i--
+                        if(symbols.isEmpty()) {
                             continue
                         }
                         var symbolSelect = Random.nextInt(symbols.size)   // pick random index in 'symbols' array
                         password += symbols[symbolSelect]
                     }
                     4 -> {
-                        if(nums.size == 0) {
-                            i--
+                        if(nums.isEmpty()) {
                             continue
                         }
                         var numsSelect = Random.nextInt(nums.size)   // pick random index in 'nums' array
