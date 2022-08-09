@@ -31,6 +31,7 @@
         android:background="#E1DDDD"
         android:hint="@string/password_here"
         android:includeFontPadding="true"
+        android:textColorHint="#757575"
         android:textIsSelectable="true"
         android:textSize="40sp"
         app:layout_constraintBottom_toBottomOf="parent"
@@ -97,35 +98,36 @@
         app:layout_constraintTop_toBottomOf="@+id/lowerCaseSwitch"
         app:layout_constraintVertical_bias="0.031" />
 
-    <TextView
-        android:id="@+id/passwordLength"
-        android:layout_width="250dp"
-        android:layout_height="48dp"
-        android:background="#FFFFFF"
-        android:editable="true"
-        android:fontFamily="sans-serif-condensed"
-        android:hint="@string/_10"
-        android:minHeight="48dp"
-        android:textAlignment="center"
-        android:textColorHint="#979392"
-        android:textSize="25sp"
-        app:layout_constraintBottom_toTopOf="@+id/generateButton"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.192"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/digitsSwitch"
-        app:layout_constraintVertical_bias="0.517" />
-
     <Button
         android:id="@+id/setButton"
         android:layout_width="wrap_content"
         android:layout_height="48dp"
         android:text="@string/set"
+        android:textColor="@color/white"
         app:layout_constraintBottom_toTopOf="@+id/generateButton"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.261"
-        app:layout_constraintStart_toEndOf="@+id/passwordLength"
+        app:layout_constraintStart_toEndOf="@+id/passwordLengthTextBox"
         app:layout_constraintTop_toBottomOf="@+id/digitsSwitch"
-        app:layout_constraintVertical_bias="0.517" />
+        app:layout_constraintVertical_bias="0.517"
+        tools:ignore="TextContrastCheck" />
+
+    <EditText
+        android:id="@+id/passwordLengthTextBox"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:ems="10"
+        android:fontFamily="sans-serif"
+        android:hint="@string/password_length_1_20"
+        android:importantForAutofill="no"
+        android:inputType="number|textPersonName"
+        android:minHeight="48dp"
+        android:textAlignment="center"
+        android:textColorHint="#616161"
+        android:textSize="20sp"
+        app:layout_constraintBottom_toTopOf="@+id/generateButton"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.154"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/digitsSwitch" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>
