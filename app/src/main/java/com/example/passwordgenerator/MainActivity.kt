@@ -4,6 +4,7 @@ import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.widget.Switch
 import kotlinx.android.synthetic.main.activity_main.*
+import java.lang.Exception
 import kotlin.random.Random
 
 
@@ -73,12 +74,17 @@ class MainActivity : AppCompatActivity() {
 
         // set the length of the password based on the inputted number in "passLengthTextBox" when the "SET" button is pressed
         setButton.setOnClickListener {
-            if(Integer.parseInt(passwordLengthTextBox.text.toString()) in 1..12) {
-                passLength = Integer.parseInt(passwordLengthTextBox.text.toString())
-                passwordLengthTextBox.text.clear()
-            } else {
-                passwordTextBox.text = "Invalid Number!"
-                passwordLengthTextBox.text.clear()
+            try {
+                if (Integer.parseInt(passwordLengthTextBox.text.toString()) in 1..12) {
+                    passLength = Integer.parseInt(passwordLengthTextBox.text.toString())
+                    passwordLengthTextBox.text.clear()
+                } else {
+                    passwordTextBox.text = "Invalid Number!"
+                    passwordLengthTextBox.text.clear()
+                }
+            } catch(e:Exception){
+                if(!hidePasswordSwitch.isChecked)
+                    passwordTextBox.text = "Invalid!"
             }
         }
 
