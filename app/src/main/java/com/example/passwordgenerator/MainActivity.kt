@@ -24,7 +24,7 @@ class MainActivity : AppCompatActivity() {
     var nums:Array<Char> = sampleNums    // nums array to be used in random generator
 
     /**
-     * generates the string 'password' with a random assortment of letters, numbers, and symbols; displays the password to the UI
+     * generates the string 'password' with a random assortment of letters, numbers, and symbols using the 'random' package and the arrays above; displays the password to the UI
      */
     fun generate(){
         password = ""
@@ -32,9 +32,8 @@ class MainActivity : AppCompatActivity() {
 
         // make sure that at least one of the switches is on before generating
         var okayToGenerate = true
-        if(!upperCaseSwitch.isChecked && !lowerCaseSwitch.isChecked && !digitsSwitch.isChecked && !symbolsSwitch.isChecked) {
+        if(!upperCaseSwitch.isChecked && !lowerCaseSwitch.isChecked && !digitsSwitch.isChecked && !symbolsSwitch.isChecked)
             okayToGenerate = false
-        }
 
         while(i < passLength && okayToGenerate) {
             when(Random.nextInt(1,5)) {   // pick random number from 1-4 to decide which array to pick an element out of
@@ -139,7 +138,7 @@ class MainActivity : AppCompatActivity() {
             }
         }
 
-        // generate the random password using the 'random' package and arrays when the "GENERATE" button is pressed
+        // generate the random password using the generate button when the "GENERATE" button is pressed
         generateButton.setOnClickListener {
             generate()
         }
