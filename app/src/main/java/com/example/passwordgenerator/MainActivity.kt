@@ -86,7 +86,14 @@ class MainActivity : AppCompatActivity() {
         generateButton.setOnClickListener {
             password = ""
             var i = 0
-            while(i < passLength) {
+
+            // make sure that at least one of the switches is on before generating
+            var okayToGenerate = true
+            if(!upperCaseSwitch.isChecked && !lowerCaseSwitch.isChecked && !digitsSwitch.isChecked && !symbolsSwitch.isChecked) {
+                okayToGenerate = false
+            }
+
+            while(i < passLength && okayToGenerate) {
                 when(Random.nextInt(1,5)) {   // pick random number from 1-4 to decide which array to pick an element out of
                     1 -> {
                         if(upperAlphabets.isEmpty()) continue
@@ -111,7 +118,9 @@ class MainActivity : AppCompatActivity() {
                 }
                 i++
             }
-            passwordTextBox.text = password     // set text box on UI to the generated password
+            // if password is supposed to be hidden, then don't update the display
+            if(!hidePasswordSwitch.isChecked)
+                passwordTextBox.text = password     // set text box on UI to the generated password
         }
     }
 }
