@@ -79,8 +79,12 @@ class MainActivity : AppCompatActivity() {
                     passLength = Integer.parseInt(passwordLengthTextBox.text.toString())
                     passwordLengthTextBox.text.clear()
                 } else {
-                    passwordTextBox.text = "Invalid Number!"
-                    passwordLengthTextBox.text.clear()
+                    if(!hidePasswordSwitch.isChecked) {
+                        passwordTextBox.text = "Invalid Number!"
+                        passwordLengthTextBox.text.clear()
+                    } else {
+                        passwordLengthTextBox.text.clear()
+                    }
                 }
             } catch(e:Exception){
                 if(!hidePasswordSwitch.isChecked)
